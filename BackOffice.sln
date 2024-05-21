@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOffice", "BackOffice\BackOffice\BackOffice.csproj", "{2C17C75F-7F00-44F5-864A-D1C79C17D52E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOffice.Client", "BackOffice\BackOffice.Client\BackOffice.Client.csproj", "{9920E76B-753B-42A0-B78E-5BFB6E6734F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C17C75F-7F00-44F5-864A-D1C79C17D52E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C17C75F-7F00-44F5-864A-D1C79C17D52E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C17C75F-7F00-44F5-864A-D1C79C17D52E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C17C75F-7F00-44F5-864A-D1C79C17D52E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9920E76B-753B-42A0-B78E-5BFB6E6734F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9920E76B-753B-42A0-B78E-5BFB6E6734F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9920E76B-753B-42A0-B78E-5BFB6E6734F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9920E76B-753B-42A0-B78E-5BFB6E6734F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2842353-ECAB-415D-8466-9D8C546417E7}
+	EndGlobalSection
+EndGlobal
