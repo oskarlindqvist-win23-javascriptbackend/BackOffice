@@ -2,6 +2,7 @@ using BackOffice.Client.Pages;
 using BackOffice.Components;
 using BackOffice.Components.Account;
 using BackOffice.Data;
+using BackOffice.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+
+builder.Services.AddScoped<GraphQLService>();
 
 builder.Services.AddAuthentication(options =>
     {

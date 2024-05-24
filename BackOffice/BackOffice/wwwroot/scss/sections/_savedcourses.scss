@@ -1,0 +1,279 @@
+.saved-courses {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include lg {
+            flex-direction: row;
+        }
+
+        aside {
+            border-right: 1px solid var(--color-gray-300);
+            padding-right: 20px;
+
+            @media(max-width: 992px) {
+                border-right: none;
+            }
+
+            .profile-info {
+                margin: 20px;
+                text-align: center;
+                margin-right: 100px;
+
+                .image-profile {
+                    position: relative;
+                    display: inline-block;
+                    margin-left: 50px;
+
+                    img {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+
+                    .btn-circle {
+                        @include shadow-s;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        background-color: var(--color-white);
+                        border: 1px solid var(--color-gray-300);
+                        border-radius: 100%;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        i {
+                            color: var(--color-gray-800);
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+                            background: var(--color-gray-600);
+
+                            i {
+                                color: var(--color-white);
+                            }
+                        }
+                    }
+                }
+
+                h5 {
+                    margin-top: 15px;
+                    margin-bottom: 0;
+                    margin-left: 50px;
+                }
+
+                p {
+                    @include text-m;
+                    margin-left: 50px;
+                }
+            }
+
+            nav {
+                margin-top: 50px;
+                text-align: left;
+
+                a {
+                    margin-left: 10px 0;
+                    text-align: left;
+                    justify-content: flex-start;
+                }
+
+                .btn-theme-s {
+                    text-align: left;
+                    justify-content: flex-start;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .box-savedcourses {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            padding: 30px;
+
+            @include lg {
+                padding: 50px 100px;
+                border-left: 1px solid $gray-300;
+            }
+
+            .saved-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                align-items: center;
+
+                h1 {
+                    margin-right: 20px;
+
+                    @media(max-width: 486px) {
+                        display: none;
+                    }
+                }
+
+                .btn-gray {
+                    height: 60%;
+                    background-color: transparent;
+                    border: 1px solid red;
+                    color: red;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    &:hover {
+                        text-decoration: none;
+                        background-color: red;
+                        color: $white;
+                    }
+                }
+            }
+
+            .courses-square {
+                display: grid;
+                grid-template-columns: auto;
+                gap: 25px;
+
+                @include md {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    gap: 25px;
+                }
+
+                .grid-item {
+                    position: relative;
+                    border: 1px solid #DAD9D3;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    transition: box-shadow 0.3s ease-in-out;
+                    margin-bottom: 20px;
+                    max-width: 416px;
+                    height: 473px;
+
+                    &:hover {
+                        box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
+                    }
+
+                    .img-container {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 15px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+
+                    .text-top {
+                        font-size: 13px;
+                        color: #ffffff;
+                        background-color: rgba(11, 172, 37, 0.7);
+                        padding: 5px;
+                        border-radius: 3px;
+                        position: absolute;
+                        top: 15px;
+                        left: 15px;
+                    }
+
+                    .button-top {
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        cursor: pointer;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        background-color: var(--color-gray-100);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: background-color 0.3s, color 0.3s;
+
+                        i {
+                            color: black;
+                            font-size: 16px;
+                        }
+
+                        &:hover {
+                            background-color: var(--color-danger);
+
+                            i {
+                                color: white;
+                            }
+                        }
+
+                        &.saved {
+                            background-color: var(--color-theme);
+
+                            i {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .text-info {
+                        text-align: left;
+                        padding: 20px;
+
+                        h5 {
+                            margin-top: 10px;
+                        }
+
+                        .creator {
+                            color: var(--color-gray-600);
+                        }
+
+                        .price {
+                            font-weight: 700;
+                            color: var(--color-theme);
+                            border-bottom: 1px solid #DAD9D3;
+                            padding-bottom: 15px;
+
+                            &.discount {
+                                color: red; // Set the color to red for the discounted price
+
+                                del {
+                                    color: var(--color-gray-600);
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+
+                        .clock {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 5px;
+
+                            .fa-regular {
+                                color: var(--color-gray-600);
+                                margin-top: 3px;
+                            }
+
+                            p {
+                                color: var(--color-gray-600);
+                            }
+
+                            .thumbs-up {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 5px;
+                                margin-left: 25px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,167 @@
+.newsletter {
+    background-color: var(--color-gray-100);
+
+    .dark & {
+        background-color: var(--color-gray-800);
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        padding-bottom: 100px;
+        align-items: center;
+
+        @include xl {
+            padding-left: 13%;
+            padding-top: 80px;
+            padding-bottom: 100px;
+            align-items: start;
+        }
+
+        .content {
+            display: flex;
+            gap: 20px;
+
+            h1 {
+                @include h2;
+                text-align: center;
+
+                @include lg {
+                    @include h1;
+                    text-align: start;
+                }
+            }
+
+            img {
+                display: none;
+
+                @include lg {
+                    display: block;
+                }
+            }
+        }
+
+        #registerNewsletter {
+
+            .choose-newsletter {
+                display: flex;
+                justify-content: space-between;
+                padding: 30px 0 50px 0;
+
+                @include lg {
+                    gap: 115px;
+                    justify-content: start;
+                }
+
+                .checkboxes {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    column-gap: 40px;
+
+                    @include lg {
+                        grid-template-columns: 1fr 1fr 1fr;
+                        column-gap: 40px;
+                    }
+
+                    .form-check {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        .form-check-input {
+                            border: 2px solid var(--color-gray-500);
+
+                            .dark & {
+                                background-color: var(--color-gray-700);
+                            }
+
+                            &:checked {
+                                background-color: var(--color-theme);
+                                border-color: var(--color-theme);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .subscribe {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include lg {
+                    flex-direction: row;
+                }
+
+                i {
+                    position: absolute;
+                    color: var(--color-gray-500);
+                    top: 15px;
+                    left: 15px;
+
+                    @media(max-width: 991px) {
+                        top: 15px;
+                        left: 15px;
+                    }
+                }
+
+                input {
+                    background-color: var(--color-white);
+                    color: var(--color-gray-500);
+                    text-decoration: none;
+                    padding: 10px 40px;
+                    border-radius: 8px;
+                    outline: none;
+                    border: 1px solid var(--color-gray-400);
+                    width: 100%;
+
+                    .dark & {
+                        background: var(--color-gray-800);
+                    }
+
+                    @include lg {
+                        width: 688px;
+                    }
+
+                    &:focus {
+                        @include theme-shadow;
+                    }
+                }
+
+                button {
+                    border-radius: 8px;
+                    text-wrap: nowrap;
+                    transition: all 0.15s ease-in-out;
+                }
+            }
+        }
+
+        .information {
+            margin-top: 5px;
+
+            .alert {
+                padding: 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                margin-top: 20px;
+                display: inline-block;
+            }
+
+
+
+            p {
+                padding-top: 10px;
+
+                @media(min-width: 992px) {
+                    margin-left: 20px;
+                }
+
+                a {
+                    color: var(--color-theme);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+#signin {
+    height: 100%;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        @include lg {
+            width: 60%;
+        }
+
+        @include xl {
+            width: 30%;
+        }
+
+        form {
+            padding: 1rem;
+
+            #form-error {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .content {
+                display: grid;
+                gap: 1rem 2rem;
+                grid-template-columns: 1fr;
+                grid-template-areas: "email" "password" "remember" "button" "forgot";
+
+                .form-control {
+                    width: 100%;
+                }
+
+                #form-email {
+                    grid-area: email;
+                }
+
+                #form-password {
+                    grid-area: password;
+                }
+
+                #form-remember {
+                    grid-area: remember;
+                }
+
+                #form-button {
+                    grid-area: button;
+                }
+
+                #form-forgot-password {
+                    width: 100%;
+                    grid-area: forgot;
+                    margin: 1rem 0 0 0;
+                    text-align: center;
+                }
+
+                .border-line {
+                    border-top: 1px solid #ccc;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+
+                .external-providers {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .h6 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .providers {
+                        display: flex;
+                        gap: 15px;
+
+                        .btn-theme-s {
+                            background-color: var(--color-gray-200);
+                            color: var(--color-gray-800);
+
+                            &:hover {
+                                text-decoration: none;
+                                background: var(--color-gray-700);
+                                color: var(--color-white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

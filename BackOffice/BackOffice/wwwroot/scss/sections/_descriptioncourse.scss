@@ -1,0 +1,95 @@
+.description-course {
+
+    .container {
+
+        .description-header {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+
+            @media(max-width: 1200px) {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .singlecourse-header {
+
+                p {
+                    margin-top: 20px;
+                }
+
+                .learn-what {
+
+                    .checked-info {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 10px;
+
+                        .fa-regular {
+                            color: var(--color-theme);
+                        }
+
+                        .fa-circle-check {
+                            color: var(--color-theme);
+                        }
+
+                        p {
+                        }
+                    }
+                }
+            }
+
+            .singlecourse-box {
+                display: flex;
+                flex-direction: column;
+                padding-right: 100px;
+                padding-top: 30px;
+                padding-left: 30px;
+                padding-bottom: 30px;
+                height: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                @media(max-width: 1200px) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+                }
+
+                .course-include {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 10px;
+                }
+
+                .price-box {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 15px;
+
+                    .price {
+                        font-weight: 700;
+                        @include text-lead;
+                        color: var(--color-black);
+
+                        &.discount {
+                            color: red; // Set the color to red for the discounted price
+
+                            del {
+                                color: var(--color-gray-600);
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+
+                .btn-theme-s {
+                    width: 60%;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
