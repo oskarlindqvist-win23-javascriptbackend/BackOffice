@@ -13,49 +13,6 @@ namespace BackOffice.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Course>> GetCoursesAsync()
-        {
-            try
-            {
-                var query = new
-                {
-                    query = @"{
-                getCourses {
-                    id
-                    imageUri
-                    isBestseller
-                    title
-                    authors { name }
-                    prices {
-                        currency
-                        price
-                        discount
-                    }
-                    starRating
-                    reviews
-                    likesInProcent
-                    likes
-                    hours
-                }
-            }"
-                };
-
-                var response = await _httpClient.PostAsJsonAsync("graphql", query);
-                response.EnsureSuccessStatusCode();
-
-                var result = await response.Content.ReadFromJsonAsync<GraphQLResponse<IEnumerable<Course>>>();
-                if (result != null && result.Data != null)
-                {
-                    return result.Data;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-            return null!;
-        }
-
         public async Task<Course> CreateCourseAsync(object mutation)
         {
             try

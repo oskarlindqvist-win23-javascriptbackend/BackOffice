@@ -15,40 +15,46 @@ else
 {
     @foreach (var user in users)
     {
-        <div class="mb-3">@user.FirstName @user.LastName</div>
+        <a href="/userdetails/@user.Id">
+            <div class="mb-3">
+                @user.FirstName
+                @user.LastName
+                @user.Email
+            </div>
+        </a>
     }
 }
 
 @code {
-    private ApplicationUser[]? users;
+    private UserInfoModel[]? users;
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<ApplicationUser[]>("http://localhost:7081/api/GetUser");
+        users = await Http.GetFromJsonAsync<UserInfoModel[]>("http://localhost:7081/api/GetUser");
     }
 
-    public class ApplicationUser
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Biography { get; set; }
-        public object ProfileImage { get; set; }
-        public object AddressId { get; set; }
-        public object Address { get; set; }
-        public string Id { get; set; }
-        public string UserName { get; set; }
-        public string NormalizedUserName { get; set; }
-        public string Email { get; set; }
-        public string NormalizedEmail { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public string PasswordHash { get; set; }
-        public string SecurityStamp { get; set; }
-        public string ConcurrencyStamp { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool PhoneNumberConfirmed { get; set; }
-        public bool TwoFactorEnabled { get; set; }
-        public object LockoutEnd { get; set; }
-        public bool LockoutEnabled { get; set; }
-        public int AccessFailedCount { get; set; }
-    }
+    // public class ApplicationUser
+    // {
+    //     public string? FirstName { get; set; }
+    //     public string? LastName { get; set; }
+    //     // public string Biography { get; set; }
+    //     // public object ProfileImage { get; set; }
+    //     // public object AddressId { get; set; }
+    //     // public object Address { get; set; }
+    //     // public string Id { get; set; }
+    //     // public string UserName { get; set; }
+    //     // public string NormalizedUserName { get; set; }
+    //     public string? Email { get; set; }
+    //     // public string NormalizedEmail { get; set; }
+    //     // public bool EmailConfirmed { get; set; }
+    //     // public string PasswordHash { get; set; }
+    //     // public string SecurityStamp { get; set; }
+    //     // public string ConcurrencyStamp { get; set; }
+    //     // public string PhoneNumber { get; set; }
+    //     // public bool PhoneNumberConfirmed { get; set; }
+    //     // public bool TwoFactorEnabled { get; set; }
+    //     // public object LockoutEnd { get; set; }
+    //     // public bool LockoutEnabled { get; set; }
+    //     // public int AccessFailedCount { get; set; }
+    // }
 }

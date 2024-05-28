@@ -121,6 +121,11 @@
     </div>
 
     <div class="mb-3">
+        <label for="learn" class="form-label">Course Learn</label>
+        <InputText id="learn" class="form-control" @bind-Value="learnString" placeholder="Enter learn separated by commas with no space between" />
+    </div>
+
+    <div class="mb-3">
         <label for="programDetailTitle" class="form-label">Program Detail Title</label>
         <InputText id="programDetailTitle" class="form-control" @bind-Value="programDetailTitle" placeholder="Enter program detail title" />
     </div>
@@ -143,6 +148,7 @@
     private string? authorName;
     private string? includesString;
     private string? categoriesString;
+    private string? learnString;
     private string[] categories = Array.Empty<string>();
     private string[] includes = Array.Empty<string>();
 
@@ -175,6 +181,11 @@
             if (!string.IsNullOrWhiteSpace(includesString))
             {
                 course.Content!.Includes = includesString.Split(',').Select(x => x.Trim()).ToArray();
+            }
+
+            if (!string.IsNullOrWhiteSpace(learnString))
+            {
+                course.Content!.Learn = learnString.Split(',').Select(x => x.Trim()).ToArray();
             }
 
             if (!string.IsNullOrWhiteSpace(programDetailTitle) && !string.IsNullOrWhiteSpace(programDetailDescription))
@@ -221,6 +232,7 @@
                         content {
                             description
                             includes
+                            learn
                             programDetails {
                                 id
                                 title

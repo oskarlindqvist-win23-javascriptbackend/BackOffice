@@ -140,6 +140,7 @@
             display: grid;
             grid-template-columns: auto;
             gap: 25px;
+            cursor: pointer;
 
             @include md {
                 display: grid;
@@ -275,6 +276,14 @@
                             gap: 5px;
                             margin-left: 25px;
                         }
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
                     }
                 }
             }
