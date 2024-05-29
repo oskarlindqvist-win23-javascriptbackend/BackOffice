@@ -33,7 +33,7 @@
                     display: grid;
                     gap: 1rem 2rem;
                     grid-template-columns: 1fr;
-                    grid-template-areas: "firstname" "lastname" "email" "phone" "addressline-1" "addressline-2" "postalcode" "city" "bio" "buttons";
+                    grid-template-areas: "firstname" "lastname" "email" "phone" "bio" "addressline_1" "addressline_2" "postalcode" "city" "buttons";
 
                     @media(max-width: 538px) {
                         display: flex;
@@ -60,22 +60,6 @@
                         grid-area: phone;
                     }
 
-                    #form-addressline-1 {
-                        grid-area: addressline-1;
-                    }
-
-                    #form-addressline-2 {
-                        grid-area: addressline-2;
-                    }
-
-                    #form-postalcode {
-                        grid-area: postalcode;
-                    }
-
-                    #form-city {
-                        grid-area: city;
-                    }
-
                     #form-bio {
                         grid-area: bio;
 
@@ -83,6 +67,31 @@
                             color: var(--color-gray-500);
                             font-weight: 400;
                         }
+                    }
+
+                    #form-addressline-1 {
+                        grid-area: addressline_1;
+                        width: 100%;
+                    }
+
+                    #form-addressline-2 {
+                        grid-area: addressline_2;
+                        width: 100%;
+
+                        span {
+                            color: var(--color-gray-500);
+                            font-weight: 400;
+                        }
+                    }
+
+                    #form-postalcode {
+                        grid-area: postalcode;
+                        width: 100%;
+                    }
+
+                    #form-city {
+                        grid-area: city;
+                        width: 100%;
                     }
 
                     #form-buttons {

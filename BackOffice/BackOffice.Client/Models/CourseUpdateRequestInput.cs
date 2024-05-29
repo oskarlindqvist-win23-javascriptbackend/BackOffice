@@ -18,6 +18,7 @@ public class CourseUpdateRequestInput
     public virtual List<AuthorUpdateInput>? Authors { get; set; }
     public virtual PricesUpdateInput? Prices { get; set; }
     public virtual ContentUpdateInput? Content { get; set; }
+    public virtual ProgramDetailItemUpdateInput? ProgramDetails { get; set; }
 
     public class AuthorUpdateInput
     {
@@ -36,13 +37,15 @@ public class CourseUpdateRequestInput
         public string? Description { get; set; }
         public string[]? Includes { get; set; }
         public string[]? Learn { get; set; }
-        public virtual List<ProgramDetailItemUpdateInput>? ProgramDetails { get; set; }
     }
 
     public class ProgramDetailItemUpdateInput
     {
-        public int Id { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
+        public string? Title_1 { get; set; }
+        public string? Description_1 { get; set; }
+        public string? Title_2 { get; set; }
+        public string? Description_2 { get; set; }
+        public string? Title_3 { get; set; }
+        public string? Description_3 { get; set; }
     }
 }

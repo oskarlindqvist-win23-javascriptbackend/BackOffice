@@ -5,6 +5,7 @@
 @attribute [StreamRendering]
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 <h3>Update Course</h3>
 
@@ -145,13 +146,33 @@
         </div>
 
         <div class="mb-3">
-            <label for="programDetailTitle" class="form-label">Program Detail Title</label>
-            <input id="programDetailTitle" class="form-control" @bind="programDetailTitle" placeholder="Enter program detail title" />
+            <label for="title_1" class="form-label">Program Detail Title 1</label>
+            <InputText id="title_1" class="form-control" @bind-Value="course.ProgramDetails!.Title_1" placeholder="Enter program detail title_1" />
         </div>
 
         <div class="mb-3">
-            <label for="programDetailDescription" class="form-label">Program Detail Description</label>
-            <input id="programDetailDescription" class="form-control" @bind="programDetailDescription" placeholder="Enter program detail description" />
+            <label for="description1" class="form-label">Program Detail Description 1</label>
+            <InputText id="description1" class="form-control" @bind-Value="course.ProgramDetails.Description_1" placeholder="Enter program detail description_1" />
+        </div>
+
+        <div class="mb-3">
+            <label for="title_2" class="form-label">Program Detail Title 2</label>
+            <InputText id="title_2" class="form-control" @bind-Value="course.ProgramDetails.Title_2" placeholder="Enter program detail title_2" />
+        </div>
+
+        <div class="mb-3">
+            <label for="description2" class="form-label">Program Detail Description 2</label>
+            <InputText id="description2" class="form-control" @bind-Value="course.ProgramDetails.Description_2" placeholder="Enter program detail description_2" />
+        </div>
+
+        <div class="mb-3">
+            <label for="title_3" class="form-label">Program Detail Title 3</label>
+            <InputText id="title_3" class="form-control" @bind-Value="course.ProgramDetails.Title_3" placeholder="Enter program detail title_3" />
+        </div>
+
+        <div class="mb-3">
+            <label for="description3" class="form-label">Program Detail Description 3</label>
+            <InputText id="description3" class="form-control" @bind-Value="course.ProgramDetails.Description_3" placeholder="Enter program detail description_3" />
         </div>
 
 
@@ -173,10 +194,6 @@ else
     private string? learnString;
     private string[] categories = Array.Empty<string>();
     private string[] includes = Array.Empty<string>();
-
-    private string? programDetailTitle;
-    private string? programDetailDescription;
-    // private int programDetailCounter = 1;
 
     [SupplyParameterFromQuery]
     private string? ReturnUrl { get; set; }
@@ -226,11 +243,14 @@ else
                     description
                     includes
                     learn
-                    programDetails {
-                        id
-                        title
-                        description
-                    }
+                }
+                programDetails {
+                    title_1
+                    description_1
+                    title_2
+                    description_2
+                    title_3
+                    description_3
                 }
             }
         }",
@@ -284,25 +304,22 @@ else
                                 Learn = content.TryGetProperty("learn", out var learn) && learn.ValueKind != JsonValueKind.Null
                                     ? learn.EnumerateArray().Select(learnItem => learnItem.GetString()!).ToArray()
                                     : Array.Empty<string>(),
-                                    ProgramDetails = content.TryGetProperty("programDetails", out var programDetailsElement) && programDetailsElement.ValueKind != JsonValueKind.Null
-                                        ? programDetailsElement.EnumerateArray().Select(detail => new ProgramDetailItemUpdateInput
-                                {
-                                    Id = detail.GetProperty("id").GetInt32(),
-                                    Title = detail.GetProperty("title").GetString()!,
-                                    Description = detail.GetProperty("description").GetString()
-                                }).ToList()
-                                    : new List<ProgramDetailItemUpdateInput>()
                             }
-                                : new ContentUpdateInput()
+                                : new ContentUpdateInput(),
+                        ProgramDetails = courseJson.TryGetProperty("programDetails", out var programDetails) && programDetails.ValueKind != JsonValueKind.Null
+                                    ? new ProgramDetailItemUpdateInput
+                            {
+                                Title_1 = programDetails.GetProperty("title_1").GetString(),
+                                Description_1 = programDetails.GetProperty("description_1").GetString(),
+                                Title_2 = programDetails.GetProperty("title_2").GetString(),
+                                Description_2 = programDetails.GetProperty("description_2").GetString(),
+                                Title_3 = programDetails.GetProperty("title_3").GetString(),
+                                Description_3 = programDetails.GetProperty("description_3").GetString(),
+                            }
+                                : new ProgramDetailItemUpdateInput()
                     };
 
-                // categoriesString = string.Join(",", course.Categories);
-                // includesString = string.Join(",", course.Content.Includes);
-                // learnString = string.Join(",", course.Content.Learn);
-                // programDetails = course?.Content?.ProgramDetails;
-
                 authorName = course.Authors.FirstOrDefault()?.Name;
-                // authorName = string.Join(", ", course.Authors.Select(a => a.Name));
                 categoriesString = string.Join(",", course?.Categories ?? Enumerable.Empty<string>());
                 includesString = string.Join(",", course?.Content?.Includes ?? Enumerable.Empty<string>());
                 learnString = string.Join(",", course?.Content?.Learn ?? Enumerable.Empty<string>());
@@ -321,7 +338,6 @@ else
 
             var updatedCourse = new CourseUpdateRequestInput
                 {
-                    // Kopiera alla egenskaper från det ursprungliga course-objektet
                     Id = course!.Id,
                     Title = course.Title,
                     ImageUri = course.ImageUri,
@@ -347,17 +363,19 @@ else
                         Description = course.Content?.Description,
                         Includes = includesString?.Split(',', StringSplitOptions.RemoveEmptyEntries),
                         Learn = learnString?.Split(',', StringSplitOptions.RemoveEmptyEntries),
-                        ProgramDetails = course.Content?.ProgramDetails?.Select(detail => new CourseUpdateRequestInput.ProgramDetailItemUpdateInput
-                        {
-                            Id = detail.Id,
-                            Title = programDetailTitle,
-                            Description = programDetailDescription
-                        }).ToList()
+                    },
+                    ProgramDetails = new ProgramDetailItemUpdateInput
+                    {
+                        Title_1 = course.ProgramDetails?.Title_1,
+                        Description_1 = course.ProgramDetails?.Description_1,
+                        Title_2 = course.ProgramDetails?.Title_2,
+                        Description_2 = course.ProgramDetails?.Description_2,
+                        Title_3 = course.ProgramDetails?.Title_3,
+                        Description_3 = course.ProgramDetails?.Description_3,
                     }
                 };
 
 
-            // Skapa GraphQL-mutationsfråga
             var mutation = new GraphQLQuery
                 {
                     Query = @"
@@ -388,18 +406,20 @@ else
                     description
                     includes
                     learn
-                    programDetails {
-                        id
-                        title
-                        description
-                    }
+                }
+                programDetails {
+                    title_1
+                    description_1
+                    title_2
+                    description_2
+                    title_3
+                    description_3
                 }
             }
         }",
-                    Variables = new { input = updatedCourse } // Pass the updated course object
+                    Variables = new { input = updatedCourse }
                 };
 
-            // Skicka POST-förfrågan
             var response = await Http.PostAsJsonAsync("http://localhost:7081/api/graphql", mutation);
             if (response.IsSuccessStatusCode)
             {
@@ -424,23 +444,20 @@ else
     {
         try
         {
-            // Create the input object for the mutation with only the ID of the course to delete
             var deleteInput = new
             {
-                id = course!.Id // Assuming course is not null and has the ID of the course to delete
+                id = course!.Id 
             };
 
-            // Create the GraphQL mutation query
             var mutation = new GraphQLQuery
                 {
                     Query = @"
                 mutation DeleteCourse($id: String!) {
                     deleteCourse(id: $id)
                 }",
-                    Variables = deleteInput // Pass the deleteInput object with the ID
+                    Variables = deleteInput 
                 };
 
-            // Send the HTTP POST request with the mutation query
             var response = await Http.PostAsJsonAsync("http://localhost:7081/api/graphql", mutation);
             if (response.IsSuccessStatusCode)
             {
