@@ -17,7 +17,7 @@ namespace BackOffice.Services
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("http://localhost:7081/api/graphql", mutation);
+                var response = await _httpClient.PostAsJsonAsync("https://courseprovider-oskarl.azurewebsites.net/api/graphql?code=xC5zjH68LnD9xsWJLfzI7LCQYKV6SRJ8IFDD1tvdrEmEAzFuk9XzNw%3D%3D", mutation);
                 response.EnsureSuccessStatusCode();
 
                 var result = await response.Content.ReadFromJsonAsync<GraphQLResponse<Course>>();
