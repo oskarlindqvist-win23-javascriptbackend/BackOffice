@@ -77,7 +77,7 @@ else
         {
             try
             {
-                subscriber = await Http.GetFromJsonAsync<Subscriber>($"http://localhost:7098/api/GetSubscriberById/{subscriberId}");
+                subscriber = await Http.GetFromJsonAsync<Subscriber>($"https://newsletterprovider-oskarl.azurewebsites.net/api/GetSubscriberById/{subscriberId}?code=RH0PKr_XQ2HxDnfyN7YhncVx75y16DoMs3Khh17K4ti9AzFuZg89IA%3D%3D");
                 if (subscriber != null)
                 {
                     formModel = subscriber;
@@ -92,7 +92,7 @@ else
 
     private async Task OnValidSubmitAsync()
     {
-        string url = $"http://localhost:7098/api/UpdateSubscriber/{subscriberId}";
+        string url = $"https://newsletterprovider-oskarl.azurewebsites.net/api/UpdateSubscriber/{subscriberId}?code=3QJkc2A_87-OdRtp7C-ZsjHXsy2bKjr1gWfCEXUwx6W_AzFuFFP38w%3D%3D";
         var updateRequest = new { Email = formModel.Email };
         try
         {
@@ -132,7 +132,7 @@ else
 
     private async Task HandleSubmitAsync()
     {
-        string url = $"http://localhost:7098/api/Unsubscribe";
+        string url = $"https://newsletterprovider-oskarl.azurewebsites.net/api/Unsubscribe?code=fHZbKdYTMC9Crm9tl7DMTFVNshAtazy3MuzH2udxwHzwAzFubyFcNA%3D%3D";
         var deleteRequest = new { Email = formModel.Email };
         try
         {
