@@ -421,7 +421,7 @@ else
                     Variables = new { input = updatedCourse }
                 };
 
-            var response = await Http.PostAsJsonAsync("http://localhost:7081/api/graphql", mutation);
+            var response = await Http.PostAsJsonAsync("https://courseprovider-oskarl.azurewebsites.net/api/graphql?code=xC5zjH68LnD9xsWJLfzI7LCQYKV6SRJ8IFDD1tvdrEmEAzFuk9XzNw%3D%3D", mutation);
             if (response.IsSuccessStatusCode)
             {
                 SuccessMessage = "Course updated successfully!";
@@ -459,7 +459,7 @@ else
                     Variables = deleteInput 
                 };
 
-            var response = await Http.PostAsJsonAsync("http://localhost:7081/api/graphql", mutation);
+            var response = await Http.PostAsJsonAsync("https://courseprovider-oskarl.azurewebsites.net/api/graphql?code=xC5zjH68LnD9xsWJLfzI7LCQYKV6SRJ8IFDD1tvdrEmEAzFuk9XzNw%3D%3D", mutation);
             if (response.IsSuccessStatusCode)
             {
                 SuccessMessage = "Course deleted successfully!";
