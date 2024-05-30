@@ -31,7 +31,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<UserInfoModel[]>("http://localhost:7081/api/GetUser");
+        users = await Http.GetFromJsonAsync<UserInfoModel[]>("https://userprovider-oskarl.azurewebsites.net/api/GetUser?code=g0F5ZYkD0u9xttjudnNFMcUGDVbHc9DoA34SwVTZBLV9AzFuDf7I4g%3D%3D");
     }
 
     // public class ApplicationUser

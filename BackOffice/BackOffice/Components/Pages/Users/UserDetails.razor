@@ -1,4 +1,4 @@
-﻿@page "/userdetails/{UserId}"
+﻿@page "/userdetails/{userId}"
 @using BackOffice.Data
 @using Newtonsoft.Json
 @using System.Text
@@ -109,7 +109,7 @@ else
     private UserInfoModel? user;
 
     [Parameter]
-    public string? UserId { get; set; }
+    public string? userId { get; set; }
 
     private string? ErrorMessage { get; set; }
 
@@ -123,11 +123,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        if (!string.IsNullOrEmpty(UserId))
+        if (!string.IsNullOrEmpty(userId))
         {
             try
             {
-                user = await Http.GetFromJsonAsync<UserInfoModel>($"http://localhost:7081/api/GetUserById/{UserId}");
+                user = await Http.GetFromJsonAsync<UserInfoModel>($"https://userprovider-oskarl.azurewebsites.net/api/GetUserById/{userId}?code=7DrrayjwggUvNkQ6juKsf3b25EFRjg-GVQQsm0Bl6bbUAzFuUmjzAA%3D%3D");
                 if (user != null)
                 {
                     Input = user;
@@ -146,7 +146,7 @@ else
     {
         try
         {
-            var response = await Http.PutAsync($"http://localhost:7081/api/UpdateUser/{UserId}", new StringContent(JsonConvert.SerializeObject(Input), Encoding.UTF8, "application/json"));
+            var response = await Http.PutAsync($"https://userprovider-oskarl.azurewebsites.net/api/UpdateUser/{userId}?code=Pw3BOYv82yd8iaHZrohu5V1H09Qu5gzY4wrMRWRP0PV0AzFuPk3LTg%3D%3D", new StringContent(JsonConvert.SerializeObject(Input), Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 SuccessMessage = "User information updated successfully.";
@@ -166,7 +166,7 @@ else
     {
         try
         {
-            var response = await Http.DeleteAsync($"http://localhost:7081/api/DeleteUser/{UserId}");
+            var response = await Http.DeleteAsync($"https://userprovider-oskarl.azurewebsites.net/api/DeleteUser/{userId}?code=Vlems5jVAx9Sdy47IvKqJtJ4YSpM0QVTke8SzcOJp68fAzFuGiS2Ug%3D%3D");
             if (response.IsSuccessStatusCode)
             {
                 SuccessMessage = "User was deleted successfully";
