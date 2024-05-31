@@ -22,6 +22,7 @@
 
 .navbar-brand {
     font-size: 1.1rem;
+
 }
 
 .bi {
@@ -67,7 +68,7 @@
 }
 
 .nav-item {
-    font-size: 0.9rem;
+/*    font-size: 0.9rem;*/
     padding-bottom: 0.5rem;
 }
 
@@ -117,9 +118,9 @@
     .nav-scrollable {
         /* Never collapse the sidebar for wide screens */
         display: block;
-
         /* Allow sidebar to scroll for tall menus */
         height: calc(100vh - 3.5rem);
         overflow-y: auto;
+        background-color: var(--color-theme);
     }
 }
